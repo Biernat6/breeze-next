@@ -2,6 +2,7 @@ import useSWR from 'swr'
 import axios from '@/lib/axios'
 import { useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
+import { registerUser } from '@/lib/auth'
 
 export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
     const router = useRouter()
@@ -25,21 +26,29 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
 
         setErrors([])
 
-        axios
-            .post('/register', props)
-            .then(() => mutate())
-            .catch(error => {
-                if (error.response.status !== 422) throw error
+        try {
+            const data = await registerUser(
+                props.name,
+                props.lastname,
+                props.email,
+                props.password
+            );
 
-                setErrors(error.response.data.errors)
-            })
+            console.log("Reg res:", data)
+
+            
+        } catch(error){
+            console.error("register error:", error)
+        }
+
     }
+     
 
-    const login = async ({ setErrors, setStatus, ...props }) => {
+    const login = async ({ setErrors, ...props }) => {
         await csrf()
 
         setErrors([])
-        setStatus(null)
+        //setStatus(null)
 
         axios
             .post('/login', props)

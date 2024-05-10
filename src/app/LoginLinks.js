@@ -24,12 +24,12 @@ const LoginLinks = () => {
                         Login
                     </Link>
 
-                    <Link
+                    {/* <Link
                         href="/register"
                         className="ml-4 text-sm text-gray-700 underline"
                     >
                         Register
-                    </Link>
+                    </Link> */}
                 </>
             )}
         </div>

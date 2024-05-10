@@ -1,14 +1,17 @@
-import '@/app/global.css'
+import { Inter } from 'next/font/google'
+import './ui/globals.css'
+
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-    title: 'Laravel',
-}
-const RootLayout = ({ children }) => {
-    return (
-        <html lang="en">
-            <body className="antialiased">{children}</body>
-        </html>
-    )
+  title: 'Admin Dashboard',
+  description: '08.05.2024',
 }
 
-export default RootLayout
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body className={inter.className}>{children}</body>
+    </html>
+  )
+}
