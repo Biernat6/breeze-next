@@ -1,6 +1,7 @@
-import LoginLinks from '@/app/LoginLinks'
-import ProductsList from '@/components/ProductsList'
-import axios from 'axios'
+//import LoginLinks from '@/app/LoginLinks'
+//import axios from 'axios'
+import 'tailwindcss/tailwind.css'; 
+import Index from './index/page'
 
 export const metadata = {
     title: 'Laravel',
@@ -9,11 +10,7 @@ export const metadata = {
 const Home = async () => {
     return (
         <>
-            <div className="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-                <LoginLinks />
-                <ProductsList />
-
-            </div>
+            <Index />
         </>
     )
 }

@@ -1,19 +1,14 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ['./src/**/*.js'],
-    darkMode: 'media',
+    content: [
+      "./src/**/*.{js,jsx,ts,tsx}",
+    ],
     theme: {
-        extend: {
-            fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
-            },
-        },
+      extend: {
+        fontFamily: {
+          Roboto: ['Roboto Condensed', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif'],
+        }
+      },
     },
-    variants: {
-        extend: {
-            opacity: ['disabled'],
-        },
-    },
-    plugins: [require('@tailwindcss/forms')],
-}
+    plugins: [],
+  }
