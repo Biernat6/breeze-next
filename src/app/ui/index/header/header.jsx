@@ -42,7 +42,7 @@ function Header() {
           <div className="hidden lg:block navigation-container">
             <NavigationItem label="Home" href="#" />
             <NavigationItem label="Product" href="#" />
-            <NavigationItem label="Shop" href="#" />
+            <NavigationItem label="Shop" href="/shop" />
             <NavigationItem label="News" href="#" />
             <NavigationItem label="Contacts" href="#" />
             <NavigationItem label="Contacts" href="#" />

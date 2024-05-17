@@ -20,3 +20,36 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+
+.product-button {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  color: white; 
+}
+
+.product-button::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #16a34a;
+  transition: top 0.3s ease-in-out;
+  z-index: 0;
+}
+
+.product-button:hover::before {
+  top: 0;
+}
+
+.product-button span {
+  position: relative;
+  z-index: 1;
+}
+

@@ -4,7 +4,7 @@ import './ui/globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Admin Dashboard',
+  title: 'Page',
   description: '08.05.2024',
 }
 

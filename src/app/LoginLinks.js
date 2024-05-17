@@ -30,6 +30,20 @@ const LoginLinks = () => {
                     >
                         Register
                     </Link> */}
+
+                        <Link
+                            href="/shop"
+                            className="text-sm text-gray-700 underline"
+                        >
+                            Shop
+                        </Link>
+
+                        <Link
+                            href="/shop-details"
+                            className="text-sm text-gray-700 underline"
+                        >
+                            ShopDetails
+                        </Link>
                 </>
             )}
         </div>
