@@ -1,6 +1,7 @@
 "use client"
 import React from 'react';
 import styles from "./header.module.css";
+import { useRouter } from "next/navigation";
 import { IoCartOutline } from "react-icons/io5";
 import { IoIosSearch } from "react-icons/io";
 import { IoListCircle } from "react-icons/io5";
@@ -10,6 +11,7 @@ import { FaTwitter, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Brands } from "./client/brands.jsx";
+import { FaUserAlt } from "react-icons/fa";
 import Logo from "../../../../../public/img/logo/logo.png"
 import banner from "../../../../../public/img/banner/banner_round_bg.png"
 import suple from "../../../../../public/img/banner/banner_img01.png"
@@ -30,6 +32,16 @@ function NavigationItem({ label, href }) {
 function Header() {
 
   const [isMenuOpen, setMenuOpen] = useState(false)
+  const [isPopupOpen, setPopupOpen] = useState(false);
+  const router = useRouter();
+
+  const handlePanelClick = () => {
+    router.push("/account/panel");
+  };
+
+  const handleKoszykClick = () => {
+    router.push("cart");
+  };
 
   return (
     <header className={styles.header} style={{ padding: 0, margin: 0 }}>
@@ -48,10 +60,40 @@ function Header() {
             <NavigationItem label="Contacts" href="#" />
           </div>
 
+
           <div className={styles.icons} style={{ padding: 7, margin: 45 }}>
+            <p className={styles.icon}>Patryk</p>
+            <div className="relative">
+
+              <FaUserAlt
+                className={styles.icon}
+                onClick={() => setPopupOpen(!isPopupOpen)}
+              />
+              {isPopupOpen && (
+                <div className="absolute right-0 mt-3 w-48 bg-white border border-gray-200 rounded shadow-lg z-40">
+                  <div
+                    className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+                    onClick={handlePanelClick}
+                  >
+                    Panel
+                  </div>
+                  <div className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+                    onClick={handleKoszykClick}
+                  >
+                    Koszyk
+                  </div>
+                </div>
+              )}
+            </div>
             <IoCartOutline className={styles.icon} />
             <IoIosSearch className={styles.icon} />
-            <IoListCircle className='' style={{ color: 'green', fontSize: 50 }} onClick={() => { setMenuOpen(!isMenuOpen) }} />
+            <IoListCircle
+              className=""
+              style={{ color: "green", fontSize: 50 }}
+              onClick={() => {
+                setMenuOpen(!isMenuOpen);
+              }}
+            />
           </div>
         </ul>
       </nav>

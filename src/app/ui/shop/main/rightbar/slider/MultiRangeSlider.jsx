@@ -2,20 +2,18 @@ import React, { useCallback, useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import "./multiRangeSlider.css";
 
-const MultiRangeSlider = ({ min, max, onChange }) => {
+const MultiRangeSlider = ({ min, max, onChange, onFilter }) => {
     const [minVal, setMinVal] = useState(min);
     const [maxVal, setMaxVal] = useState(max);
     const minValRef = useRef(min);
     const maxValRef = useRef(max);
     const range = useRef(null);
 
-    // Convert to percentage
     const getPercent = useCallback(
         (value) => Math.round(((value - min) / (max - min)) * 100),
         [min, max]
     );
 
-    // Set width of the range to decrease from the left side
     useEffect(() => {
         const minPercent = getPercent(minVal);
         const maxPercent = getPercent(maxValRef.current);
@@ -26,7 +24,6 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
         }
     }, [minVal, getPercent]);
 
-    // Set width of the range to decrease from the right side
     useEffect(() => {
         const minPercent = getPercent(minValRef.current);
         const maxPercent = getPercent(maxVal);
@@ -36,7 +33,6 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
         }
     }, [maxVal, getPercent]);
 
-    // Get min and max values when their state changes
     useEffect(() => {
         onChange({ min: minVal, max: maxVal });
     }, [minVal, maxVal, onChange]);
@@ -76,7 +72,12 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
                     <div className="w-[180px]">
                         Price : {minVal}$ - {maxVal}$
                     </div>
-                    <button className="text-sm font-bold h-[35px] w-[80px] bg-green-600 text-white hover:bg-amber-500 ml-12">FILTER</button>
+                    <button
+                        className="text-sm font-bold h-[35px] w-[80px] bg-green-600 text-white hover:bg-amber-500 ml-12"
+                        onClick={() => onFilter({ min: minVal, max: maxVal })}
+                    >
+                        FILTER
+                    </button>
                 </div>
             </div>
         </div>
@@ -86,7 +87,8 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
 MultiRangeSlider.propTypes = {
     min: PropTypes.number.isRequired,
     max: PropTypes.number.isRequired,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    onFilter: PropTypes.func.isRequired
 };
 
 export default MultiRangeSlider;

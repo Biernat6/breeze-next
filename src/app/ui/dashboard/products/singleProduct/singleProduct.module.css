@@ -4,7 +4,7 @@
   margin-top: 20px;
 }
 
-.infoContainer {
+.infoContainer2 {
   flex: 1;
   background-color: var(--bgSoft);
   padding: 20px;
@@ -14,7 +14,7 @@
   height: max-content;
 }
 
-.imgContainer{
+.imgContainer {
   width: 100%;
   height: 300px;
   position: relative;
@@ -28,27 +28,34 @@
   background-color: var(--bgSoft);
   padding: 20px;
   border-radius: 10px;
+  max-height: 1050px;
 }
 
-.form{
+.infoContainer2 input[type="text"] {
+  width: 100%;
+  padding: 20px;
+}
+
+.form {
   display: flex;
   flex-direction: column;
 }
 
-.form input, .form textarea, .form select{
+.form input, .form textarea, .form select {
   padding: 20px;
   border: 2px solid #2e374a;
   border-radius: 5px;
   background-color: var(--bg);
   color: var(--text);
-  margin: 10px 0px;
+  margin: 10px 0px;  
+  resize: none;
 }
 
-.form label{
+.form label {
   font-size: 12px;
 }
 
-.form button{
+.form button {
   width: 100%;
   padding: 20px;
   background-color: teal;
@@ -57,4 +64,28 @@
   border-radius: 5px;
   cursor: pointer;
   margin-top: 20px;
+}
+
+.deleteButtonContainer {
+  position: absolute;
+  z-index: 100 !important;
+  padding: 0px !important;
+}
+
+.deleteButton {
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 5px !important;
+  background-color: red !important;
+  color: white !important; 
+  font-size: 18px !important;
+}
+
+.imgForm {
+  margin-top: 100px;
+}
+
+.imgUpdateButton {
+  margin-bottom: 40px;
 }
